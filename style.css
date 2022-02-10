@@ -1,0 +1,410 @@
+@import url("https://fonts.googleapis.com/css2?family=Mulish&display=swap");
+* {
+  outline: none;
+  border: 0;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+  text-decoration: none;
+  border: 0;
+}
+
+body {
+  background: rgb(12, 58, 126);
+  background: linear-gradient(
+    90deg,
+    rgba(12, 58, 126, 0.7399334733893557) 0%,
+    rgba(204, 204, 204, 1) 100%
+  );
+  position: relative;
+  font-family: "Mulish", sans-serif;
+  width: 100%;
+  color: rgba(12, 58, 126, 0.7399334733893557);
+  height: 100vh;
+}
+form {
+  position: relative;
+  overflow: hidden;
+}
+i {
+  transition: all 0.5s;
+}
+/* NAV CSS */
+nav {
+  padding: 1rem;
+  width: 100%;
+  height: 60px;
+  line-height: 60px;
+  background: #0c3a7e;
+  display: flex;
+  align-items: center;
+  animation: nav 0.5s;
+}
+nav .left {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+}
+nav .left img {
+  width: 80px;
+  height: 80px;
+  line-height: 29px;
+  margin: 2rem;
+  border: 1px solid #ccc;
+  border-radius: 30px;
+  transform: rotate(20deg);
+  animation: opacity 1s;
+}
+nav .left p {
+  font-weight: 700;
+  cursor: pointer;
+  letter-spacing: 2px;
+  font-size: 1.5rem;
+  animation: blur 0.5s;
+  color: #ccc;
+}
+nav .left p::before {
+  content: "";
+  background-color: #ccc;
+  position: absolute;
+  height: 100%;
+  text-align: center;
+  top: 50%;
+  transform: translateY(-50%);
+}
+nav .right {
+  display: flex;
+  align-items: center;
+}
+nav .right a {
+  font-size: 1rem;
+  color: #ccc;
+  transition: all 0.2s;
+}
+nav .right a:hover {
+  font-size: 1.2rem;
+  background: transparent;
+  transition: all 0.25s;
+}
+
+nav .right a:hover > i {
+  transform: skew(-8deg);
+}
+nav .right a:hover > i::after {
+  color: #fff;
+  position: absolute;
+  top: -15px;
+  border-radius: 4px;
+  right: 70%;
+  content: "Go to repo";
+  color: #fff;
+  width: 100px;
+  height: 30px;
+  letter-spacing: 4px;
+  font-size: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: skew(0);
+}
+
+/* GLOBAL CSS */
+#fake-input {
+  display: none !important;
+}
+.d-none {
+  display: none !important;
+}
+.blur {
+  filter: blur(2px);
+  opacity: 0.9;
+  transition: all 0.5s;
+}
+.btn.abs {
+  animation: blur 0.5s;
+  position: absolute;
+  top: 111px;
+  right: 54px;
+  background: #0c3a7e;
+  color: #ccc;
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  line-height: 30px;
+  cursor: pointer;
+  box-shadow: 3px 4px 5px 0px #888888;
+  border-radius: 4px;
+  transition: all 0.2s;
+  z-index: 1;
+}
+.btn.abs:hover {
+  background: transparent;
+  box-shadow: 0 0 10px 0px #888888;
+  color: #0c3a7e;
+  transform: scale(1.5);
+}
+
+.btn.abs:hover > i {
+  transform: skew(-10deg);
+  color: red;
+}
+.btn.abs:hover > i::after {
+  position: absolute;
+  top: -40px;
+  border-radius: 4px;
+  right: 50%;
+  content: "Remove List!";
+  color: #fff;
+  width: 100px;
+  height: 30px;
+  letter-spacing: 4px;
+  font-size: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: skew(0);
+}
+.container {
+  width: 100%;
+  height: calc(100vh - 60px);
+  display: flex;
+  padding: 2rem;
+  overflow: hidden;
+}
+
+.alert {
+  display: flex;
+  justify-content: center;
+  opacity: 0;
+  margin: 0 auto;
+  border-top: 1px solid #ccc;
+  padding: 0.2rem;
+  text-align: center;
+  background: transparent;
+  color: #ccc;
+  width: 100%;
+  overflow: hidden;
+  word-break: break-word;
+  position: fixed;
+  top: 60px;
+  z-index: -1;
+  left: 0;
+  transition: all 0.2s;
+  transform: scale(1.2);
+  filter: blur(10px);
+  letter-spacing: 4px;
+}
+.alert.active {
+  opacity: 1;
+  transform: scale(1);
+  filter: blur(0);
+  letter-spacing: 0;
+}
+
+.alert.error {
+  opacity: 1;
+  color: white;
+  transform: scale(1);
+  filter: blur(0);
+  letter-spacing: 0;
+  background: red;
+  border: none;
+}
+
+.container .wrapper-1,
+.container .wrapper-2 {
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.144);
+  box-shadow: 0 0 2px #fff;
+  padding: 1rem;
+  transition: all 0.5s;
+  animation: wrapper-begin 0.5s;
+}
+
+/* LEFT */
+.container .wrapper-1 {
+  flex: 0 20%;
+  margin-right: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+.container .wrapper-1 .config {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  animation: opacity 3s;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  order: 1;
+  justify-content: space-between;
+  position: relative;
+  height: 50px;
+}
+
+.container .wrapper-1 .config .date {
+  width: 50px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  border-right: 1px solid #ccc;
+  cursor: pointer;
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+  transition: all 0.5s ease;
+}
+.container .wrapper-1 .config .date.active-check {
+  background: linear-gradient(
+    90deg,
+    rgba(12, 58, 126, 0.7399334733893557) 0%,
+    rgba(204, 204, 204, 1) 100%
+  );
+  color: white;
+  width: 50%;
+  transition: all 0.5s;
+  letter-spacing: 4px;
+  border-radius: 8px;
+}
+.container .wrapper-1 .config .date label {
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container .wrapper-1 .config .date input#date_checkbox {
+  outline: none;
+  border: 0;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  visibility: hidden;
+}
+
+.container .wrapper-1 .config select {
+  text-align: center;
+  height: 100%;
+  margin-left: 10px;
+  border-left: 1px solid #ccc;
+  width: 60px;
+  background: transparent;
+}
+
+.container .wrapper-1 .input-area {
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  animation: opacity 3s;
+}
+.container .wrapper-1 .input-area input {
+  width: 100%;
+  height: 40px;
+  border-radius: 8px;
+  padding: 1rem;
+}
+.container .wrapper-1 .input-area i {
+  position: absolute;
+  color: #0c3a7e;
+  right: 10px;
+  font-size: 20px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  transition: all 0.2s;
+}
+
+.container .wrapper-1 .input-area i:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+}
+/* RIGHT */
+.container .wrapper-2 {
+  flex: 1;
+}
+.result-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: all 0.5s;
+}
+.result-container #result {
+  height: 100%;
+  overflow: auto;
+  transition: all 0.5s;
+}
+.result-container #result li {
+  letter-spacing: 1px;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  padding: 0.5rem;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s;
+  word-break: break-word;
+}
+.result-container #result li:hover {
+  background: #ccc;
+  color: #fff;
+  position: relative;
+}
+.result-container .empty-text {
+  font-size: 3rem;
+  width: 100%;
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: opacity 3s;
+}
+@media screen and (max-width: 767px) {
+  nav .left img {
+    display: none;
+  }
+  nav .left p {
+    font-size: 1rem;
+  }
+  .container {
+    flex-direction: column;
+    margin: 0;
+  }
+  .container .wrapper-1 {
+    width: 100%;
+    height: 200px;
+    margin: 0;
+  }
+  .container .wrapper-1 .config {
+    margin-bottom: 10px;
+  }
+  .container .wrapper-1 .config select {
+    border: 0;
+    height: 20px;
+    margin-left: 0 auto;
+  }
+  .container .wrapper-2 {
+    margin-top: 2rem;
+  }
+  .btn.abs {
+    top: 270px;
+    right: 20px;
+  }
+
+  .btn.abs:hover > i::after {
+    top: -15px;
+    right: 50px;
+    content: "Remove List!";
+  }
+}

@@ -1,0 +1,56 @@
+@keyframes opacity {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes blur {
+  from {
+    filter: blur(10px);
+  }
+  to {
+    filter: blur(0px);
+  }
+}
+@keyframes nav {
+  from {
+    height: 0;
+    padding: 0;
+  }
+  to {
+    height: 60px;
+    padding: 1rem;
+  }
+}
+@keyframes fade-in {
+  from {
+    filter: blur(10px);
+    top: 100px;
+    opacity: 0;
+  }
+  to {
+    top: -22px;
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+
+@keyframes date-label-on {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.5);
+  }
+}
+
+@keyframes wrapper-begin {
+  from {
+    height: 0;
+  }
+  to {
+    height: 100%;
+  }
+}
